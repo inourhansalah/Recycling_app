@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: recycling_db
+    environment:
+      POSTGRES_DB: recycling
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_HOST_AUTH_METHOD: trust  # This removes the password barrier for now
+    ports:
+      - "5433:5432"  # Map Host 5433 to Container 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
